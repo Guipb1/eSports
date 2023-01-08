@@ -10,7 +10,7 @@ export default function App() {
     Inter_600SemiBold,
     Inter_700Bold,
     Inter_900Black
-  });
+  });  
 
   return (
     <Background>
