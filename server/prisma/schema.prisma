@@ -1,0 +1,40 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// nome da tabela
+// Nao posso ter tabelas sem chave primaria
+
+//  relacionamento = o game pode ter varios anucios
+model Game {
+  id        String @id //chave primaria
+  title     String
+  bannerUrl String
+  ads       Ad[]
+}
+
+// relacionamento = o ad sempre vai pertencer a um game
+model Ad {
+  id              String   @id
+  gameId          String
+  name            String
+  yearsPlaying    Int
+  discord         String
+  weekDays        String
+  hourStart       Int
+  hourEnd         Int
+  useVoiceChannel Boolean
+  createdAt       DateTime @default(now())
+
+  game Game @relation(fields: [gameId], references: [id])
+}
+
+// migration - versionamento para banco de dados
