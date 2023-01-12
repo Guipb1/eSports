@@ -1,4 +1,5 @@
 # Back-end
+    - cors = serve para indicar quais enderecos front-end queremos permitir que acessem nosso back, se nao for configurado nenhum front consegue acessar a API
 
 ## Entidades 
 
