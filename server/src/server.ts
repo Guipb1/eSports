@@ -27,6 +27,7 @@ POST - Criando algo
 **/
 
 import express from 'express'
+import cors from 'cors'
 import {PrismaClient}from '@prisma/client'
 import { convertHoursStringToMinutes } from './utils/convert-hour-string-to-minutes'
 import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-string'
@@ -34,6 +35,10 @@ import { convertMinutesToHourString } from './utils/convert-minutes-to-hour-stri
 //criando a aplicação
 const app = express()
 app.use(express.json())
+app.use(cors(
+    //{origin:'http://exemplo.com.br'} // pemitindo requisicoes apenas desse dominio para para o nosso back-end
+    // esta aberto qualquer front 
+))
 const prisma = new PrismaClient({
     log:['query']
 })
